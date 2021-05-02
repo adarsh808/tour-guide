@@ -1,0 +1,29 @@
+<div class="navigation-page">
+    <div class="form-wrapper" *ngIf="this.citiesList.length">
+     <app-autocomplete [data]="this.citiesList" [keyword]="this.keyword" placeHolder="Pick your starting point" (selectionEvent)="addCityToPath($event)" ></app-autocomplete>
+     <div *ngIf="pathList.length">
+     <div *ngFor="let destinaton of pathList;let i=index;trackBy:destination?.id">
+         <div class="destination-input">
+              <app-autocomplete [data]="this.citiesList" [keyword]="this.keyword" placeHolder="Pick your destination" (selectionEvent)="addCityToPath($event)" (changeEvent)="cancelSelection($event)" [cityNumber]="i+1" ></app-autocomplete>
+              <span title="Delete destination mark" class="delete-icon" (click)="deleteDestination(i+1)"><i class="fa fa-trash fa-md pl-2" ></i></span>
+
+              </div>
+
+     </div>
+     </div>
+      <div *ngIf="showButton" class="button-wrapper">
+      <button type="button" (click)="addDestination()" class="add-destination">Add one more destination</button>
+      <button
+        class="complete-trip"
+        type="button"
+        (click)="completeTrip()"
+        [disabled]="!isSelectionValid"
+      >
+        Complete Trip
+      </button>
+    </div>
+    </div>
+    <div class="map-container">
+        <div id=map></div>
+    </div>
+</div>

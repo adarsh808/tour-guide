@@ -1,0 +1,44 @@
+
+@import "../../../styles/mixin.scss";
+
+.navigation-page{
+    display: flex;
+    flex-wrap: wrap;
+    .form-wrapper{
+        width: 35%;
+   .destination-input{
+       margin-top: 45px;
+       display: flex;
+       .delete-icon{
+               display: inline-block;
+                padding: 10px;
+                cursor: pointer;
+       }
+   }
+        .button-wrapper{
+            margin-top: 45px;
+            display: flex;
+            button{
+                @include BUTTON();
+                &.complete-trip{
+                    margin-left: 15px;
+                }
+            }
+        }
+        @media screen and (max-width:1068px) {
+            width:100%;
+            margin-bottom: 20px;
+        }
+    }
+    .map-container{
+        width: 65%;
+        #map{
+        
+            height: 70vh;
+            
+        }
+         @media screen and (max-width:1068px) {
+            width:100%
+        }
+    }
+}
